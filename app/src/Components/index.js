@@ -1,1 +1,2 @@
-export { default as CourseListPage } from "./CourseListPage";
+import { App } from "./App/App";
+export { App };
