@@ -1,3 +1,3 @@
-import { createPost } from "./actions";
+import { createPost, fetchedPosts } from "./actions";
 
-export { createPost };
+export { createPost, fetchedPosts };
