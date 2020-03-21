@@ -1,1 +1,3 @@
-export { default as actions } from "./actions";
+import { createPost } from "./actions";
+
+export { createPost };

@@ -11,4 +11,11 @@ function Posts({ posts }) {
   });
 }
 
-export default connect()(Posts);
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    posts: state.posts
+  };
+};
+
+export default connect(mapStateToProps)(Posts);

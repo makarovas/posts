@@ -15,11 +15,11 @@ export function App() {
       <div className="row">
         <div className="col">
           <h2>sync posts</h2>
-          <Posts posts={[1, 2, 3, 4]} />
+          <Posts />
         </div>
         <div className="col">
           <h2>async posts</h2>
-          <FetchedPosts posts={[]} />
+          <FetchedPosts />
         </div>
       </div>
     </div>

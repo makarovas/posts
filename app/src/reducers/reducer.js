@@ -14,7 +14,7 @@ const reducer = produce((state, action) => {
   }
 }, initialStateOld);
 
-const initialState = {};
+const initialState = { posts: [1, 2, 3, 4] };
 
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {

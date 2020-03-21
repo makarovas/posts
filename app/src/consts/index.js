@@ -1,3 +1,3 @@
-import { ADD, ADD_COURSE } from "./consts";
+import { ADD, ADD_COURSE, CREATE_POST } from "./consts";
 
-export { ADD, ADD_COURSE };
+export { ADD, ADD_COURSE, CREATE_POST };
