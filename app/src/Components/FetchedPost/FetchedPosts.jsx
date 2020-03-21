@@ -5,7 +5,7 @@ import { fetchedPosts } from "../../actions";
 
 export default function FetchedPosts() {
   const dispatch = useDispatch();
-  const selector = useSelector();
+  const posts = useSelector(state => state.posts.FetchedPosts);
   if (!posts.length) {
     return (
       <button
