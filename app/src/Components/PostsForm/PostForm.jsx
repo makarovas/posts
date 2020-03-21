@@ -12,7 +12,11 @@ class PostForm extends Component {
     event.preventDefault();
     const { title } = this.state;
     const newPost = { title, id: Date.now().toLocaleString() };
+    if (!title.trim()) {
+      return;
+    }
     this.props.createPost(newPost);
+
     console.log(newPost);
     // this.setState({ value: "" });
   };
