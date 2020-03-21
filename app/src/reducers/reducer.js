@@ -1,7 +1,9 @@
 import produce from "immer";
-import { ADD_COURSE } from "../consts";
+import { combineReducers } from "redux";
+import { ADD_COURSE, ADD } from "../consts";
+import { postReducer } from "./postReducer";
 
-const initialState = [{ courses: [] }];
+const initialStateOld = [{ courses: [] }];
 
 const reducer = produce((state, action) => {
   switch (action.type) {
@@ -10,6 +12,17 @@ const reducer = produce((state, action) => {
     default:
       return state;
   }
-}, initialState);
+}, initialStateOld);
 
-export default reducer;
+const initialState = {};
+
+export default function rootReducer(state = initialState, action) {
+  switch (action.type) {
+    case ADD:
+      return { ...state, count: state.count + 1 };
+    default:
+      return state;
+  }
+}
+
+export { reducer };

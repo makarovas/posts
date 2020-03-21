@@ -1,6 +1,8 @@
 import React from "react";
 import Post from "./Post";
-export default function Posts({ posts }) {
+import { connect } from "react-redux";
+
+function Posts({ posts }) {
   if (!posts.length) {
     return <p className="text-center">Постов пока нет</p>;
   }
@@ -8,3 +10,5 @@ export default function Posts({ posts }) {
     return <Post post={post} key={i} />;
   });
 }
+
+export default connect()(Posts);

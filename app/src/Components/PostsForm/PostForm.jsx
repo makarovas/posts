@@ -8,6 +8,10 @@ export default class PostForm extends Component {
   }
   handleSubmit = event => {
     event.preventDefault();
+    const { title } = this.state;
+    const newPost = { title, id: Date.now().toLocaleString() };
+    console.log(newPost);
+    this.setState({ value: "" });
   };
 
   handleChange = event => {
