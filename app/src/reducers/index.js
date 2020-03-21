@@ -1,1 +1,3 @@
-export { default as reducer } from "./reducer";
+import { postReducer } from "./postReducer";
+
+export { postReducer };

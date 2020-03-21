@@ -12,7 +12,7 @@ class PostForm extends Component {
     event.preventDefault();
     const { title } = this.state;
     const newPost = { title, id: Date.now().toLocaleString() };
-    this.something(newPost);
+    this.props.createPost(newPost);
     console.log(newPost);
     // this.setState({ value: "" });
   };
@@ -48,10 +48,14 @@ class PostForm extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    something: () => dispatch(createPost())
-  };
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     something: () => dispatch(createPost())
+//   };
+// };
+
+const mapDispatchToProps = {
+  createPost
 };
 
 export default connect(null, mapDispatchToProps)(PostForm);

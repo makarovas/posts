@@ -10,10 +10,10 @@ export const postReducer = (state = initialState, action) => {
     case CREATE_POST:
       return {
         ...state,
-        posts: [...state.posts, action.payload]
+        posts: state.posts.concat([action.payload])
+        // posts: [...state, action.payload]
       };
     default:
       return state;
   }
-  return state;
 };
