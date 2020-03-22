@@ -1,4 +1,10 @@
-import { ADD_COURSE, CREATE_POST, FETCH_POSTS } from "../consts/consts";
+import {
+  ADD_COURSE,
+  CREATE_POST,
+  FETCH_POSTS,
+  SHOW_LOADER,
+  HIDE_LOADER
+} from "../consts/consts";
 
 export function createPost(post) {
   return {
@@ -7,10 +13,25 @@ export function createPost(post) {
   };
 }
 
-export function fetchedPosts(fetchedPosts) {
+export function showLoader() {
+  return {
+    type: SHOW_LOADER
+  };
+}
+
+export function hideLoader() {
+  return {
+    type: HIDE_LOADER
+  };
+}
+export function fetchPosts(fetchedPosts) {
   return async dispatch => {
+    dispatch(showLoader());
     const response = await fetch("https://jsonplaceholder.typicode.com/posts");
     const json = await response.json();
-    dispatch({ type: FETCH_POSTS, payload: json });
+    setTimeout(() => {
+      dispatch({ type: FETCH_POSTS, payload: json });
+      dispatch(hideLoader());
+    }, 2000);
   };
 }

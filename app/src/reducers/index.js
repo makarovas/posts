@@ -1,3 +1,3 @@
-import { postReducer } from "./postReducer";
+import { rootReducer } from "./rootReducer";
 
-export { postReducer };
+export { rootReducer };
