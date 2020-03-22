@@ -29,6 +29,7 @@ class PostForm extends Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <form onSubmit={this.handleSubmit}>
         {this.props.alert && <Alert text={this.props.alert} />}

@@ -30,23 +30,34 @@ export function hideLoader() {
 
 export function fetchPosts() {
   return async dispatch => {
-    dispatch(showLoader());
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-    const json = await response.json();
-    setTimeout(() => {
-      dispatch({ type: FETCH_POSTS, payload: json });
+    try {
+      dispatch(showLoader());
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/posts"
+      );
+      const json = await response.json();
+      setTimeout(() => {
+        dispatch({ type: FETCH_POSTS, payload: json });
+        dispatch(hideLoader());
+      }, 2000);
+    } catch (err) {
+      dispatch(showAlert(err.message));
       dispatch(hideLoader());
-    }, 2000);
+    }
   };
 }
 
-export function showAlert() {
-  return {
-    type: SHOW_ALERT
-  };
-}
-export function hidAlert() {
+export function hideAlert() {
   return {
     type: HIDE_ALERT
+  };
+}
+
+export function showAlert(text) {
+  return dispatch => {
+    dispatch({ type: SHOW_ALERT, payload: text });
+    setTimeout(() => {
+      dispatch(hideAlert());
+    }, 2000);
   };
 }
