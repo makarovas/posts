@@ -10,6 +10,8 @@ import {
 } from "../consts/consts";
 
 export function createPost(post) {
+  console.log("loader createPost");
+
   return {
     type: CREATE_POST,
     payload: post
@@ -17,6 +19,7 @@ export function createPost(post) {
 }
 
 export function showLoader(text) {
+  console.log("loader run");
   return {
     type: SHOW_LOADER,
     payload: text
@@ -24,12 +27,16 @@ export function showLoader(text) {
 }
 
 export function hideLoader() {
+  console.log("loader close");
+
   return {
     type: HIDE_LOADER
   };
 }
 
 export function fetchPosts() {
+  console.log("loader fetchPosts");
+
   return {
     type: REQUEST_POSTS
   };
@@ -53,12 +60,15 @@ export function fetchPosts() {
 }
 
 export function hideAlert() {
+  console.log("hideAlert");
   return {
     type: HIDE_ALERT
   };
 }
 
 export function showAlert(text) {
+  console.log("showAlert");
+
   return dispatch => {
     dispatch({ type: SHOW_ALERT, payload: text });
     setTimeout(() => {

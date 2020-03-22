@@ -1,3 +1,9 @@
-import { createPost, fetchPosts, showAlert } from "./actions";
+import {
+  createPost,
+  fetchPosts,
+  showAlert,
+  showLoader,
+  hideLoader
+} from "./actions";
 
-export { createPost, fetchPosts, showAlert };
+export { createPost, fetchPosts, showAlert, showLoader, hideLoader };
