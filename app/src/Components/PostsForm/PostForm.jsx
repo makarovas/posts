@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { createPost } from "../../actions";
-
+import { createPost, showAlert } from "../../actions";
+import Alert from "../Alert/Alert";
 class PostForm extends Component {
   constructor(props) {
     super(props);
@@ -13,11 +13,10 @@ class PostForm extends Component {
     const { title } = this.state;
     const newPost = { title, id: Date.now().toLocaleString() };
     if (!title.trim()) {
-      return;
+      return this.props.showAlert("Alarm");
     }
     this.props.createPost(newPost);
 
-    console.log(newPost);
     // this.setState({ value: "" });
   };
 
@@ -32,6 +31,7 @@ class PostForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+        {this.props.alert && <Alert text={this.props.alert} />}
         <div className="form-group">
           <label htmlFor="title">Заголовок</label>
           <input
@@ -57,9 +57,11 @@ class PostForm extends Component {
 //     something: () => dispatch(createPost())
 //   };
 // };
+const mapStateToProps = state => ({ alert: state.app.alert });
 
 const mapDispatchToProps = {
-  createPost
+  createPost,
+  showAlert
 };
 
-export default connect(null, mapDispatchToProps)(PostForm);
+export default connect(mapStateToProps, mapDispatchToProps)(PostForm);

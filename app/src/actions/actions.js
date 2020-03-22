@@ -3,7 +3,9 @@ import {
   CREATE_POST,
   FETCH_POSTS,
   SHOW_LOADER,
-  HIDE_LOADER
+  HIDE_LOADER,
+  SHOW_ALERT,
+  HIDE_ALERT
 } from "../consts/consts";
 
 export function createPost(post) {
@@ -13,9 +15,10 @@ export function createPost(post) {
   };
 }
 
-export function showLoader() {
+export function showLoader(text) {
   return {
-    type: SHOW_LOADER
+    type: SHOW_LOADER,
+    payload: text
   };
 }
 
@@ -24,7 +27,8 @@ export function hideLoader() {
     type: HIDE_LOADER
   };
 }
-export function fetchPosts(fetchedPosts) {
+
+export function fetchPosts() {
   return async dispatch => {
     dispatch(showLoader());
     const response = await fetch("https://jsonplaceholder.typicode.com/posts");
@@ -33,5 +37,16 @@ export function fetchPosts(fetchedPosts) {
       dispatch({ type: FETCH_POSTS, payload: json });
       dispatch(hideLoader());
     }, 2000);
+  };
+}
+
+export function showAlert() {
+  return {
+    type: SHOW_ALERT
+  };
+}
+export function hidAlert() {
+  return {
+    type: HIDE_ALERT
   };
 }
