@@ -5,7 +5,8 @@ import {
   SHOW_LOADER,
   HIDE_LOADER,
   SHOW_ALERT,
-  HIDE_ALERT
+  HIDE_ALERT,
+  REQUEST_POSTS
 } from "../consts/consts";
 
 export function createPost(post) {
@@ -29,22 +30,26 @@ export function hideLoader() {
 }
 
 export function fetchPosts() {
-  return async dispatch => {
-    try {
-      dispatch(showLoader());
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/posts"
-      );
-      const json = await response.json();
-      setTimeout(() => {
-        dispatch({ type: FETCH_POSTS, payload: json });
-        dispatch(hideLoader());
-      }, 2000);
-    } catch (err) {
-      dispatch(showAlert(err.message));
-      dispatch(hideLoader());
-    }
+  return {
+    type: REQUEST_POSTS
   };
+
+  // return async dispatch => {
+  //   try {
+  //     dispatch(showLoader());
+  //     const response = await fetch(
+  //       "https://jsonplaceholder.typicode.com/posts"
+  //     );
+  //     const json = await response.json();
+  //     setTimeout(() => {
+  //       dispatch({ type: FETCH_POSTS, payload: json });
+  //       dispatch(hideLoader());
+  //     }, 2000);
+  //   } catch (err) {
+  //     dispatch(showAlert(err.message));
+  //     dispatch(hideLoader());
+  //   }
+  // };
 }
 
 export function hideAlert() {

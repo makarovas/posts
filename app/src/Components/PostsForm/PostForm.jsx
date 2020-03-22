@@ -17,7 +17,7 @@ class PostForm extends Component {
     }
     this.props.createPost(newPost);
 
-    // this.setState({ value: "" });
+    this.setState({ title: "" });
   };
 
   handleChange = event => {
@@ -40,7 +40,7 @@ class PostForm extends Component {
             className="form-control"
             id="title"
             name="title"
-            value={this.state.value}
+            value={this.state.title}
             placeholder="Введите заголовок"
             onChange={this.handleChange}
           />
